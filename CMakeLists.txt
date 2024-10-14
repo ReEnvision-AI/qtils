@@ -14,8 +14,16 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include(GNUInstallDirs)
 
-find_package(Boost CONFIG REQUIRED)
-find_package(fmt CONFIG REQUIRED)
+find_package(Boost REQUIRED)
+
+include(FetchContent)
+
+FetchContent_Declare(
+  fmt
+  GIT_REPOSITORY https://github.com/fmtlib/fmt
+  GIT_TAG        0c9fce2ffefecfdce794e1859584e25877b7b592) # 10.2.1
+FetchContent_MakeAvailable(fmt)
+
 
 add_library(qtils INTERFACE)
 target_link_libraries(qtils INTERFACE
